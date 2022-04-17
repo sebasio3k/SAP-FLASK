@@ -4,8 +4,8 @@ Sistema Administrador de Personas en framework de python: Flask
 **Tecnologías:**
 **Microframework: Flask**
 > python -m pip install flask
-**
-Flask SQL Alchemy: librería orm: permite crear clases de modelo para mappear hacia la BD**
+
+**Flask SQL Alchemy: librería orm: permite crear clases de modelo para mappear hacia la BD**
 > python -m pip install flask-sqlalchemy
 
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/
