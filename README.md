@@ -47,8 +47,6 @@ https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 
 **Para modificaciones...
 Verificar que todo esté actualizado al momento:**
-> flask db stamp head 
-<br>
-> flask db migrate
-<br>
+> flask db stamp head <br>
+> flask db migrate <br>
 > flask db upgrade
