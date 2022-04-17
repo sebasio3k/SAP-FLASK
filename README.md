@@ -10,6 +10,7 @@ Sistema Administrador de Personas en framework de python: Flask
 <br>
 
 **Flask SQL Alchemy: librería orm: permite crear clases de modelo para mappear hacia la BD**
+<br>
 https://www.sqlalchemy.org/
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 <br>
@@ -42,10 +43,11 @@ https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 > flask db upgrade
 
 <br>
+
 **Para modificaciones...
 Verificar que todo esté actualizado al momento:**
 > flask db stamp head 
-> <br>
+<br>
 > flask db migrate
-> <br>
+<br>
 > flask db upgrade
