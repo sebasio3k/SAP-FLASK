@@ -1,5 +1,5 @@
 # SAP-FLASK
-Sistema Administrador de Personas en framework de python: Flask *v.1
+Sistema Administrador de Personas en framework de python: Flask *v.1*
 
 
 <img width="885" alt="Captura de Pantalla 2022-04-19 a la(s) 16 19 36" src="https://user-images.githubusercontent.com/39862006/164103692-b2aec98e-cdde-4c4e-b5a2-734a04d7f4ef.png">
