@@ -37,7 +37,8 @@ print(secrets.token_hex())
 @app.route('/index.html')
 def inicio():
     # Listado de personas
-    personas = Persona.query.all()  # regresa objetos de tipo Persona de la BD
+    # personas = Persona.query.all()
+    personas = Persona.query.order_by(Persona.id).all()  # regresa objetos de tipo Persona de la BD
     total_personas = Persona.query.count()
 
     # Imprimir a consola los objetos:
@@ -75,3 +76,21 @@ def agregar_persona():
             return redirect(url_for('inicio'))
 
     return render_template('agregar.html', person_form=persona_form)
+
+
+@app.route('/editar/<int:id>', methods=['GET', 'POST'])
+def editar_persona(id):
+    # Recuperar objeto de tipo Persona a editar:
+    persona = Persona.query.get_or_404(id)
+    forma_persona = PersonaForm(obj=persona)  # asosicar los valores de la bd con el objeto persona
+
+    if request.method == 'POST':
+        if forma_persona.validate_on_submit():
+            forma_persona.populate_obj(persona)  # llenar objeto persona con datos del formulario
+            app.logger.debug(f'Persona a editar {persona}')
+            # Insertar el nuevo registro editado:
+            db.session.add(persona)
+            db.session.commit()
+            return redirect(url_for('inicio'))
+
+    return render_template('editar.html', person_form=forma_persona)

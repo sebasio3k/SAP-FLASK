@@ -23,24 +23,18 @@
             <th>Apellido</th>
             <th>Email</th>
             <th></th>
+            <th>Editar</th>
         </tr>
         </thead>
         <tbody>
         {% for person in people %}
         <tr>
-            <td>
-                {{person.id}}
-            </td>
-            <td>
-                {{person.nombre}}
-            </td>
-            <td>
-                {{person.apellido}}
-            </td>
-            <td>
-                {{person.email}}
-            </td>
+            <td>{{person.id}}</td>
+            <td>{{person.nombre}}</td>
+            <td>{{person.apellido}}</td>
+            <td>{{person.email}}</td>
             <td><a href="ver/{{person.id}}">Ver</a></td>
+            <td><a href="editar/{{person.id}}">Editar</a></td>
         </tr>
         {% endfor %}
         </tbody>
