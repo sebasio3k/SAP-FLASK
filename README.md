@@ -12,6 +12,8 @@ Sistema Administrador de Personas en framework de python: Flask *v.1*
 **Exportar nuevos requerimientos**
 > pip3 freeze | grep -v "pkg-resources" > requirements.txt
 
+<br>
+
 **Tecnologías:**
 **Microframework: Flask**
 > python -m pip install flask
