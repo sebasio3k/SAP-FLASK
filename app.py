@@ -1,6 +1,9 @@
+import secrets
+
 from flask import Flask, render_template
 from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
+from database import db
+from models import Persona
 
 app = Flask(__name__)
 
@@ -15,27 +18,17 @@ app.config['SQLALCHEMY_DATABASE_URI'] = FULL_URL_DB
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # no tracking de modificaciones sobre bd (puede alentar bd)
 
 # Inicializar objeto BD de SQLAchemy
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
+db.init_app(app)
 
 # Configurar extension flask-migrate, para mappeo de clase de modelo a BD:
 migrate = Migrate()
 migrate.init_app(app, db)
 
-
-# Clase de modelo:
-class Persona(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(250))
-    apellido = db.Column(db.String(250))
-    email = db.Column(db.String(250))
-
-    def __str__(self):
-        return (
-            f'ID: {self.id}, '
-            f'Nombre: {self.nombre}, '
-            f'Apellido: {self.apellido}, '
-            f'Email: {self.email}.'
-        )
+# Configurar flask-wtf:
+# app.config['SECRET_KEY'] = 'llave_secreta'
+app.config['SECRET_KEY'] = secrets.token_hex()
+print(secrets.token_hex())
 
 
 @app.route('/')
@@ -63,3 +56,9 @@ def ver_detalle(id):
     app.logger.debug(f'Ver persona: {persona}')
 
     return render_template('detalle.html', person_obj=persona)
+
+
+@app.route('/agregar', methods=['GET', 'POST'])
+def agregar_persona():
+    persona = Persona()
+    pass

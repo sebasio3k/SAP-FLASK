@@ -50,3 +50,14 @@ Verificar que todo esté actualizado al momento:**
 > flask db stamp head <br>
 > flask db migrate <br>
 > flask db upgrade
+
+<br>
+
+**Trabajar con formularios (wtforms), integración(flask-wtf):**
+> python -m pip install flask-wtf
+ 
+_configurar llave secreta_:
+
+    app.config['SECRET_KEY'] = secrets.token_hex()
+
+https://flask-wtf.readthedocs.io/en/1.0.x/
