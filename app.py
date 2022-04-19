@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
@@ -36,3 +36,30 @@ class Persona(db.Model):
             f'Apellido: {self.apellido}, '
             f'Email: {self.email}.'
         )
+
+
+@app.route('/')
+@app.route('/index')
+@app.route('/index.html')
+def inicio():
+    # Listado de personas
+    personas = Persona.query.all()  # regresa objetos de tipo Persona de la BD
+    total_personas = Persona.query.count()
+
+    # Imprimir a consola los objetos:
+    app.logger.debug(f'Listado Personas: {personas}')
+    app.logger.debug(f'Total Personas: {total_personas}')
+
+    return render_template('index.html', people=personas, total_people=total_personas)
+
+
+@app.route('/ver/<int:id>')
+def ver_detalle(id):
+    # Recuperar persona segun id:
+
+    # persona = Persona.query.get(id)
+    persona = Persona.query.get_or_404(id)
+
+    app.logger.debug(f'Ver persona: {persona}')
+
+    return render_template('detalle.html', person_obj=persona)

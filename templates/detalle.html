@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ver Persona</title>
+</head>
+<body>
+<h1>Ver persona {{person_obj.nombre}}</h1>
+<br>
+<div>ID: {{person_obj.id}}</div>
+<div>Nombre: {{person_obj.nombre}}</div>
+<div>Apellido: {{person_obj.apellido}}</div>
+<div>Email: {{person_obj.email}}</div>
+<br>
+<a href="{{url_for('inicio')}}">Regresar al inicio</a>
+</body>
+</html>
