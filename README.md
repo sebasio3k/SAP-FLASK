@@ -56,7 +56,7 @@ Verificar que todo esté actualizado al momento:**
 **Trabajar con formularios (wtforms), integración(flask-wtf):**
 > python -m pip install flask-wtf
  
-_configurar llave secreta_:
+_Configurar llave secreta_:
 
     app.config['SECRET_KEY'] = secrets.token_hex()
 

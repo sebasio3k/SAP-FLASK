@@ -1,8 +1,9 @@
 import secrets
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_migrate import Migrate
 from database import db
+from forms import PersonaForm
 from models import Persona
 
 app = Flask(__name__)
@@ -60,5 +61,17 @@ def ver_detalle(id):
 
 @app.route('/agregar', methods=['GET', 'POST'])
 def agregar_persona():
-    persona = Persona()
-    pass
+    persona = Persona()  # objeto tipo Persona
+    persona_form = PersonaForm(obj=persona)  # asociar el formulario con el objeto Persona
+
+    # Validar formulario:
+    if request.method == 'POST':
+        if persona_form.validate_on_submit():
+            persona_form.populate_obj(persona)  # llenar objeto persona con datos del formulario
+            app.logger.debug(f'Persona a insertar {persona}')
+            # Insertar el nuevo registro:
+            db.session.add(persona)
+            db.session.commit()
+            return redirect(url_for('inicio'))
+
+    return render_template('agregar.html', person_form=persona_form)
