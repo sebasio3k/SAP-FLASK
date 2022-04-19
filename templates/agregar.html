@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Persona</title>
+</head>
+<body>
+<h1>Agregar Persona</h1>
+<form method="POST">
+    <!-- Cross site request forgery -->
+    <!-- si token no se encuentra dentro de peticion, se arroja un error al procesar formulario -->
+    {{person_form.csrf_token}}
+    <p>
+        {{person_form.nombre.label}}
+        <br>
+        {{person_form.nombre(size=30)}}
+    </p>
+    <p>
+        {{person_form.apellido.label}}
+        <br>
+        {{person_form.apellido(size=30)}}
+    </p>
+    <p>
+        {{person_form.email.label}}
+        <br>
+        {{person_form.email(size=30)}}
+    </p>
+    <p>
+        {{person_form.enviar()}}
+    </p>
+
+</form>
+</body>
+</html>

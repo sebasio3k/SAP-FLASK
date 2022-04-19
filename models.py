@@ -13,5 +13,5 @@ class Persona(db.Model):
             f'ID: {self.id}, '
             f'Nombre: {self.nombre}, '
             f'Apellido: {self.apellido}, '
-            f'Email: {self.email}.'
+            f'Email: {self.email}'
         )
